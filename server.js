@@ -15,8 +15,8 @@ app.get("/main.js", (req, res) => {
   res.sendFile(path.join(__dirname, "main.js"));
 });
 
-app.use("/style", express.static(path.join(__dirname, "src", "style")));
-app.use("/pages", express.static(path.join(__dirname, "src", "pages")));
+app.use("/style", express.static(path.join(__dirname, "public", "style")));
+app.use("/pages", express.static(path.join(__dirname, "public", "pages")));
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;

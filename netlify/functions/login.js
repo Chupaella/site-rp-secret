@@ -1,5 +1,4 @@
-const fs = require("fs");
-const path = require("path");
+const users = require("../../src/data/users.json");
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -16,8 +15,6 @@ exports.handler = async (event) => {
   const form = new URLSearchParams(body);
   const username = form.get("username");
   const password = form.get("password");
-  const usersPath = path.join(process.cwd(), "src", "data", "users.json");
-  const users = JSON.parse(fs.readFileSync(usersPath, "utf8"));
 
   if (users[username] && users[username].password === password) {
     return {
